@@ -1,16 +1,16 @@
 class CategoriesController < ApplicationController
     before_action :user_signed_in?
-    before_action :find_category, only: [:show, :update, :edit, :destroy]
 
     def index
         if current_user.present?
-            @categories = Category.all
+            @categories = current_user.categories
         else
             redirect_to new_user_session_path
         end
     end
 
     def show
+        @category = Category.find(params[:id])
     end
 
     def new
@@ -28,6 +28,7 @@ class CategoriesController < ApplicationController
     end
 
     def edit
+        @category = Category.find(params[:id])
     end
 
     def update
@@ -39,6 +40,7 @@ class CategoriesController < ApplicationController
     end
 
     def destroy
+        @category = Category.find(params[:id])
         @category.destroy
 
         redirect_to root_path
@@ -46,10 +48,6 @@ class CategoriesController < ApplicationController
 
     private
     def category_params
-        params.require(:category).permit(:name, :details)
-    end
-
-    def find_category
-        @category = Category.find(params[:id])
+        params.require(:category).permit(:name, :details, :user_id)
     end
 end

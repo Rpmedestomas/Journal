@@ -1,27 +1,32 @@
-<% content_for :page_title, "Index"%>
+<% content_for :page_title, "Categories"%>
 
 <div class="section">
     <div class="container">
-        <% @categories.each do |category|%>
-            <div class="card">
-                <div class="card-content">
-                    <div class="media">
-                        <div class="media-content">
-                            <p class="title is-4">
-                                <%= link_to category.name, category %>
-                            </p>
+        <% if @categories.count == 0%>
+            <p> Let's begin! </p>
+            <%= link_to "Create Category", new_category_path %>
+        <% else %>
+            <% @categories.each do |category|%>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-content">
+                                <p class="title is-4">
+                                    <%= link_to category.name, category %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <%= category.details %>
+                        </div>
+                        <div class="task-count">
+                            <span class="tag is-rounded">
+                                <%= category.tasks.count %>
+                            </span>
                         </div>
                     </div>
-                    <div class="content">
-                        <%= category.details %>
-                    </div>
-                    <div class="comment-count">
-                        <span class="tag is-rounded">
-                            <%= category.details %>
-                        </span>
-                    </div>
                 </div>
-            </div>
+            <% end %>
         <% end %>
     </div>
 </div>

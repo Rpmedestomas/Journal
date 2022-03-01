@@ -5,7 +5,7 @@
         <div class="navbar-brand">
             <% if user_signed_in? %>
                 <%= link_to 'Home', root_path, class: "navbar-item" %>
-                <%= link_to "Create New Category", new_category_path, class:"navbar-item" %>
+                <%= link_to "Add Category", new_category_path, class:"navbar-item" %>
             <% end %>
             <span class="navbar-burger burger" data-target="navbarMenuHeroA"></span>
         </div>

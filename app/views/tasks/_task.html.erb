@@ -3,11 +3,12 @@
         <div class="media-content">
             <div class="content">
                 <p>
-                    <strong><%=task.title%>:</strong>
+                    <strong><%=task.title%></strong>
+                    <br>
                     <%= task.description %>
                 </p>
+            </div>
         </div>
-
         <%= link_to 'Delete', [task.category, task], method: :delete, data: { confirm: "Are you sure?" }, class: "button is-danger"%>
     </article>
 </div>
