@@ -1,8 +1,13 @@
 class CategoriesController < ApplicationController
+    before_action :user_signed_in?
     before_action :find_category, only: [:show, :update, :edit, :destroy]
 
     def index
-        @categories = Category.all
+        if current_user.present?
+            @categories = Category.all
+        else
+            redirect_to new_user_session_path
+        end
     end
 
     def show

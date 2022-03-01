@@ -58,3 +58,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rspec', '~> 3.11'
 gem 'bulma-rails', '~> 0.9.3'
 gem 'simple_form', '~> 5.1'
+gem 'devise'
